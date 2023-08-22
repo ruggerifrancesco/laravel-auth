@@ -10,7 +10,7 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
 
 ## Steps to build another template just like this one:
 - Enter the desired project folder 
-- Create a new project with command `composer create-project laravel/laravel **projectname**` (without '')
+- Create a new project with command `composer create-project laravel/laravel **projectname**` (without **)
 - To work with boostrap instead of Tailwind by default, you need to install it with new commands
     - !NOTE: Breeze is installed by default with Laravel 10.x
     - `composer require laravel/ui`
