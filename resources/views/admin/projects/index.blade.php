@@ -59,7 +59,10 @@
                 </table>
             </div>
 
-            {{ $projects->links() }}
+            <div class="mt-5">
+                {{ $projects->links() }}
+            </div>
+
         </div>
     </div>
 </div>
