@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
+            $table->text('description');
+            $table->integer('nPartecipants')->unsigned();;
+            $table->json('goals');
+            $table->float('budget')->unsigned();
+            $table->boolean('isSuspended')->default(false);
+            $table->boolean('hasCompleted')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
