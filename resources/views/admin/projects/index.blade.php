@@ -43,7 +43,7 @@
                                     {{ $project->isCompleted }}
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-success">
+                                    <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-success">
                                         View
                                     </a>
                                     <a href="" class="btn btn-warning">
@@ -64,7 +64,7 @@
                     {{ $projects->links() }}
                 </div>
                 <div>
-                    <a href={{ route('admin.projects.create') }} class="btn btn-success">
+                    <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
                         Create new project
                     </a>
                 </div>
