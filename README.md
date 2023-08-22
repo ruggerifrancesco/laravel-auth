@@ -5,20 +5,26 @@
 
 </p>
 
-# Template for a Laravel 9.2 + SCSS + Boostrap 5.x
-Template to generate a new standard and simple project using Laravel 9.2, Bootstrap 5.x and SCSS (SASS with SCSS Syntax).
+# Template for a Laravel 10.x + SCSS + Boostrap 5.x
+Template to generate a new standard and simple project using Laravel 10.x, Bootstrap 5.x and SCSS (SASS with SCSS Syntax).
 
 ## Steps to build another template just like this one:
-- Edit `package.json`:
-    - Update `laravel-vite-plugin` to version `^0.6.0`
-    - Update `vite` to version `^3.0.0`
-- Remove POSTCSS from our application `npm remove postcss`
+- Enter the desired project folder 
+- Create a new project with command `composer create-project laravel/laravel 'projectname'` (without '')
+- To work with boostrap instead of Tailwind by default, you need to install it with new commands
+    - !NOTE: Breeze is installed by default with Laravel 10.x
+    - `composer require laravel/ui`
+    - Next 
+- Add `package-lock.json` to `.gitignore` file
+- Add to `resources/app/js` this block of code to allow the correct renderization of our images
+
+        import.meta.glob([
+            '../img/**'
+        ])
+
 - Execute `npm i`
-- Install SASS `npm i --save-dev sass`
-- Update both css file and folder to scss:
-    - Rename `resources/css` into `resources/scss`
-    - Rename `app.css` into `app.scss`
-- Edit `vite.config.js` file:
+- ## Addionals
+    - Edit `vite.config.js` file:
 
             export default defineConfig({
                 plugins: [
@@ -30,28 +36,13 @@ Template to generate a new standard and simple project using Laravel 9.2, Bootst
                     refresh: true
                 }),
                 ],
-
                 resolve: {
                     alias: {
                         '~resources' : '/resources/',
                     }
                 }
             });
-- Add `import '~resources/scss/app.scss'` to `resources/app/js`
-- Add `@vite('resources/js/app.js')` to the pages that want to implement it (layouts included, eventually)
-- Add to `resources/app/js` this block of code to allow the correct renderization of our images
-
-        import.meta.glob([
-            '../img/**'
-        ])
-- Add `package-lock.json` to `.gitignore` file
-- Install and configure Bootstrap:
-    - Install both bootstrap and popperjs packages `npm i --save bootstrap @popperjs/core`
-    - Add `const path = require('path')` at the beginning of our `vite.config.js` file
-    - Add `'~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap')` to our aliases by the end of our `vite.config.js` file
-    - Add bootstrap js via import `import * as bootstrap from 'bootstrap';` to our `resources/app.js`
-    - Add boostrap scss via @import `@import "~bootstrap/scss/bootstrap";` to our `resources/app.scss`
-
+    - Remove POSTCSS from our application `npm remove postcss`
 
 ## Steps to use this project correctly:
 - Open this repository and click on  `Use this template ---> Create a new repository`
@@ -65,3 +56,17 @@ Template to generate a new standard and simple project using Laravel 9.2, Bootst
     - run `npm run dev` to build iteratively our front-end packages and code
     - run `php artisan serve` to build iteratively our back-end packages and code
 - Start changing the world with your oustanding code!
+
+
+
+
+
+
+
+
+
+
+
+
+- Add `import '~resources/scss/app.scss'` to `resources/app/js`
+- Add `@vite('resources/js/app.js')` to the pages that want to implement it (layouts included, eventually)
