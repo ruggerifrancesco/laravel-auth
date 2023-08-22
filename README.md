@@ -14,7 +14,7 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
 - To work with boostrap instead of Tailwind by default, you need to install it with new commands
     - !NOTE: Breeze is installed by default with Laravel 10.x
     - `composer require laravel/ui`
-    - Next 
+    - `php artisan ui bootstrap --auth`
 - Add `package-lock.json` to `.gitignore` file
 - Add to `resources/app/js` this block of code to allow the correct renderization of our images
 
