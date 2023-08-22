@@ -4,27 +4,62 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card px-3">
-                <table class="table table-light">
+            <div class="card p-3">
+                <table class="table table-light m-0">
                     <thead>
                         <tr class="table-info">
                           <th scope="col">ID</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Partecipants</th>
+                          <th scope="col">Goals</th>
+                          <th scope="col">Budget</th>
+                          <th scope="col">Project Suspended</th>
+                          <th scope="col">Project Completed</th>
+                          <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table-secondary">
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
+                        @foreach ($projects as $project)
+                            <tr class="table-secondary">
+                                <th scope="row">
+                                    {{ $project->id }}
+                                </th>
+                                <td>
+                                    {{ $project->title }}
+                                </td>
+                                <td>
+                                    {{ $project->nPartecipants }}
+                                </td>
+                                <td>
+                                    {{ $project->goals }}
+                                </td>
+                                <td>
+                                    {{ $project->budget }}
+                                </td>
+                                <td>
+                                    {{ $project->isSuspended }}
+                                </td>
+                                <td>
+                                    {{ $project->isCompleted }}
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-success">
+                                        View
+                                    </a>
+                                    <a href="" class="btn btn-warning">
+                                        Edit
+                                    </a>
+                                    <a href="" class="btn btn-danger">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 
+            {{ $projects->links() }}
         </div>
     </div>
 </div>
