@@ -19,7 +19,7 @@ return new class extends Migration
             $table->json('goals');
             $table->float('budget')->unsigned();
             $table->boolean('isSuspended')->default(false);
-            $table->boolean('hasCompleted')->default(false);
+            $table->boolean('isCompleted')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
