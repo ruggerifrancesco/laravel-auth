@@ -19,11 +19,11 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
         ])
 
 - Run `npm i` and
-- Configure correctly the `.env` file
-- Run `php artisan migrate` 
-- Run on two separeted terminals:
-    - run `npm run dev` to build iteratively our front-end packages and code
-    - run `php artisan serve` to build iteratively our back-end packages and code
+    - Configure correctly the `.env` file
+    - Run `php artisan migrate` 
+    - Run on two separeted terminals:
+        - run `npm run dev` to build iteratively our front-end packages and code
+        - run `php artisan serve` to build iteratively our back-end packages and code
 
 - ## Addionals
     - Edit `vite.config.js` file:
