@@ -15,7 +15,6 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
     - !NOTE: Breeze is installed by default with Laravel 10.x
     - `composer require laravel/ui`
     - `php artisan ui bootstrap --auth`
-- Add `package-lock.json` to `.gitignore` file
 - Add to `resources/app/js` this block of code to allow the correct renderization of our images
 
         import.meta.glob([
