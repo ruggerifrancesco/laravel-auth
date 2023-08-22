@@ -71,6 +71,6 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
 
 
 
-
+--------------------------------------------------------
 - Add `import '~resources/scss/app.scss'` to `resources/app/js`
 - Add `@vite('resources/js/app.js')` to the pages that want to implement it (layouts included, eventually)
