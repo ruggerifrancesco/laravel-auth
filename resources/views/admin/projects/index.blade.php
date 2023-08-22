@@ -59,8 +59,15 @@
                 </table>
             </div>
 
-            <div class="mt-5">
-                {{ $projects->links() }}
+            <div class="d-flex justify-content-between mt-5">
+                <div>
+                    {{ $projects->links() }}
+                </div>
+                <div>
+                    <a href={{ route('admin.projects.create') }} class="btn btn-success">
+                        Create new project
+                    </a>
+                </div>
             </div>
 
         </div>

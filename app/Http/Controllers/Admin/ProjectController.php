@@ -23,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -39,7 +39,9 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
