@@ -10,19 +10,18 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
 
 ## Steps to build another template just like this one:
 - Enter the desired project folder 
-- Create a new project with command `composer create-project laravel/laravel **projectname**` (without **)
-- To work with boostrap instead of Tailwind by default, you need to install it with new commands
-    - !NOTE: Breeze is installed by default with Laravel 10.x
-    - `composer require laravel/ui`
-    - `php artisan ui bootstrap --auth`
+- Install the needed package `composer require laravel/ui`
+- Apply the new auth scaffolding using bootstrap and laravel/ui: `php artisan ui bootstrap --auth`
 - Add to `resources/app/js` this block of code to allow the correct renderization of our images
 
         import.meta.glob([
             '../img/**'
         ])
 
-- Execute `npm i`
-- Run on two separeted terminals if are unsure that all the steps are done correctly:
+- Run `npm i` and
+- Configure correctly the `.env` file
+- Run `php artisan migrate` 
+- Run on two separeted terminals:
     - run `npm run dev` to build iteratively our front-end packages and code
     - run `php artisan serve` to build iteratively our back-end packages and code
 
@@ -46,6 +45,7 @@ Template to generate a new standard and simple project using Laravel 10.x, Boots
                 }
             });
     - Remove POSTCSS from our application `npm remove postcss`
+    - Remove css folder from resources
 
 ## Steps to use this project correctly:
 - Open this repository and click on  `Use this template ---> Create a new repository`
