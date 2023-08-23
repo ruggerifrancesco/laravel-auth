@@ -24,12 +24,26 @@
                             @enderror
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="form-floating {{ $errors->has('goals') ? 'is-invalid' : '' }}">
-                                <input type="text" class="form-control @error('goals') is-invalid @enderror" id="goals" name="goals" placeholder="Goals" required>
-                                <label for="title">Goals</label>
+                        <div class="col-md-3">
+                            <div class="form-floating {{ $errors->has('nPartecipants') ? 'is-invalid' : '' }}">
+                                <input type="number" class="form-control @error('nPartecipants') is-invalid @enderror" id="nPartecipants" name="nPartecipants" placeholder="Partecipants" required>
+                                <label for="nPartecipants">Partecipants</label>
                             </div>
-                            @error('goals')
+                            @error('nPartecipants')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <div class="form-floating {{ $errors->has('budget') ? 'is-invalid' : '' }}">
+                                    <input type="text" class="form-control @error('budget') is-invalid @enderror" id="budget" name="budget" placeholder="Budget" aria-label="Dollar amount (with dot and two decimal places)" required>
+                                    <label for="budget">Budget</label>
+                                </div>
+                                <span class="input-group-text">$</span>
+                                <span class="input-group-text">0.00</span>
+                            </div>
+                            @error('budget')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -37,7 +51,7 @@
                         <div class="input-group">
                             <div class="form-floating {{ $errors->has('description') ? 'is-invalid' : '' }}">
                                 <textarea class="form-control @error('description') is-invalid @enderror"" aria-label="Description" name="description" placeholder="Description" required></textarea>
-                                <label for="title">Description</label>
+                                <label for="description">Description</label>
                             </div>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -45,23 +59,21 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-floating {{ $errors->has('nPartecipants') ? 'is-invalid' : '' }}">
-                                <input type="text" class="form-control @error('nPartecipants') is-invalid @enderror" id="nPartecipants" name="nPartecipants" placeholder="Partecipants" required>
-                                <label for="title">Partecipants</label>
+                            <div class="input-group mb-3">
+                                <div class="form-floating {{ $errors->has('goals') ? 'is-invalid' : '' }}">
+                                    <input type="text" class="form-control @error('goals') is-invalid @enderror" id="newGoal" name="goals[]" placeholder="Goals" required>
+                                    <label for="newGoal">Goals</label>
+                                </div>
+                                <button class="btn btn-outline-secondary" type="button" id="addGoalButton">Add Goal</button>
                             </div>
-                            @error('nPartecipants')
+                            @error('goals')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-floating {{ $errors->has('budget') ? 'is-invalid' : '' }}">
-                                <input type="text" class="form-control @error('budget') is-invalid @enderror" id="budget" name="budget" placeholder="Budget" required>
-                                <label for="title">Budget</label>
-                            </div>
-                            @error('budget')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                            <ul id="goalPreviewList">
+                            </ul>
                         </div>
 
                         <div class="col-12">
