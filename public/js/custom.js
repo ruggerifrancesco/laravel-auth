@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create a new list item
             const listItem = document.createElement('li');
             listItem.textContent = newGoal;
+            listItem.classList.add('list-group-item');
             goalPreviewList.appendChild(listItem);
             newGoalInput.value = '';
         }
