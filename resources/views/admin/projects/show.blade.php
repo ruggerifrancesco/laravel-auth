@@ -72,7 +72,7 @@
                       </div>
                 </div>
                 <div class="card-footer">
-                    Buttons 
+                    Buttons
                 </div>
             </div>
         </div>
