@@ -31,6 +31,10 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // DEBUG RUN (DEV ONLY) -> Uncomment this for testing
+        // dd($request->all());
+        // die;
+
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
             'goals' => ['required', 'array', 'min:1'],
