@@ -33,7 +33,7 @@ class ProjectController extends Controller
     {
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
-            'goals' => ['required', 'min:1'],
+            'goals' => ['required', 'array', 'min:1'],
             'budget' => ['required'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
