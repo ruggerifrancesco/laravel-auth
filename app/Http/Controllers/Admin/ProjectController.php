@@ -31,7 +31,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataProject = $request->validate([
+            'title' => ['required', 'unique:projects','min:5', 'max:255'],
+            'goals' => ['required', 'min:1'],
+            'budget' => ['required'],
+            'nPartecipants' => ['required', 'integer', 'min:1'],
+            'description' => ['required', 'min:30'],
+        ]);
+
+        $dataProject['goals'] = json_encode($dataProject['goals']);
+
+        $newProject = Project::create($dataProject);
+
+        return redirect()->route('admin.projects.index')->with('success', 'Project created successfully');
     }
 
     /**
