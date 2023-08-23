@@ -5,15 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h6>
+
+                <form action="{{ route('admin.projects.store') }}" method="POST">
+                @csrf
+
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h6 class="m-0">
                         <strong>Create new Project</strong>
                     </h6>
+                    <div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-warning">Reset</button>
+                    </div>
                 </div>
+                
                 <div class="card-body">
-                    <form action="{{ route('admin.projects.store') }}" method="POST" class="row g-3">
-                      @csrf
-
+                    <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating {{ $errors->has('title') ? 'is-invalid' : '' }}">
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Title" required>
@@ -72,15 +79,10 @@
                         </div>
 
                         <div class="col-md-6">
-                            <ul id="goalPreviewList">
+                            <ul class="list-group" id="goalPreviewList">
                             </ul>
                         </div>
-
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                            <button type="reset" class="btn btn-warning">Reset</button>
-                        </div>
-                      </form>
+                      </div>
 
                 </div>
             </div>
