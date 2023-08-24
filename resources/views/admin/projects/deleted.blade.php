@@ -43,15 +43,22 @@
                                     {{ $project->isCompleted }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-success">
-                                        View
-                                    </a>
-                                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning">
-                                        Edit
-                                    </a>
-                                    <a href="" class="btn btn-danger">
-                                        Delete
-                                    </a>
+                                    <form class="d-inline-block me-2" action="{{ route('admin.projects.restore', $project->id) }}" method="POST">
+                                        @csrf
+                                        @method('POST')
+
+                                        <button type="submit" class="btn btn-warning">
+                                            Restore
+                                        </button>
+                                    </form>
+                                    <form class="d-inline-block" action="{{ route('admin.projects.obliterate', $project->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger">
+                                            Obliterate
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -69,12 +76,6 @@
                     </a>
                 </div>
             </div>
-
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
 
         </div>
     </div>

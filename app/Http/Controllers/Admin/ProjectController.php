@@ -118,10 +118,10 @@ class ProjectController extends Controller
      */
     public function restore(string $id)
     {
-        $post = Post::onlyTrashed()->findOrFail($slug);
-        $post->restore();
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->restore();
 
-        return redirect()->route('admin.posts.show', $post);
+        return redirect()->route('admin.projects.index', $project)->with('success', 'Project restored successfully');
     }
 
     /**
@@ -130,9 +130,9 @@ class ProjectController extends Controller
 
     public function obliterate(string $id)
     {
-        $post = Post::onlyTrashed()->findOrFail($slug);
-        $post->forceDelete();
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->forceDelete();
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.projects.index')->with('success', 'Project deleted successfully');
     }
 }
