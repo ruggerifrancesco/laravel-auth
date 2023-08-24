@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('nPartecipants')->unsigned();;
             $table->json('goals');
             $table->float('budget')->unsigned();
+            $table->text('image');
             $table->boolean('isSuspended')->default(false);
             $table->boolean('isCompleted')->default(false);
             $table->timestamps();

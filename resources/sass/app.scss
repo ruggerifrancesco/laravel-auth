@@ -10,3 +10,11 @@
 textarea {
     height: 300px !important;
 }
+
+.img-preview-container {
+    display: none;
+}
+
+.img-preview-container.visible {
+    display: block;
+}

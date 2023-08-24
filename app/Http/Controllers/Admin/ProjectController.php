@@ -40,11 +40,13 @@ class ProjectController extends Controller
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
             'goals' => ['required', 'array', 'min:1'],
             'budget' => ['required'],
+            'image' => ['required', 'image', 'max:512'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
         ]);
 
         $dataProject['goals'] = json_encode($dataProject['goals']);
+        $dataProject['image'] = json_encode($dataProject['goals']);
 
         $newProject = Project::create($dataProject);
 
@@ -82,6 +84,7 @@ class ProjectController extends Controller
             'title' => ['required','min:5', 'max:255', Rule::unique('projects')->ignore($project->id)],
             'goals' => ['required', 'array', 'min:1'],
             'budget' => ['required'],
+            'image' => ['required', 'image', 'max:512'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
         ]);

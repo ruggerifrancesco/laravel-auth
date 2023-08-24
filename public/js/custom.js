@@ -23,4 +23,22 @@ document.addEventListener('DOMContentLoaded', function() {
             newGoalInput.value = '';
         }
     });
+
+    const imageInput = document.getElementById('imageUploader');
+    const imgPreview = document.querySelector('.img-preview-container img');
+
+    imageInput.addEventListener('change', function() {
+        const imageFile = imageInput.files[0];
+
+        if (imageFile) {
+            const reader = new FileReader();
+
+            reader.addEventListener('load', function(event) {
+                imgPreview.src = event.target.result;
+                imgPreview.parentElement.classList.add('visible');
+            });
+
+            reader.readAsDataURL(imageFile);
+        }
+    });
 });

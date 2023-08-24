@@ -20,6 +20,7 @@ class ProjectSeeder extends Seeder
             $newProject->description = $faker->paragraphs(10, true);
             $newProject->nPartecipants = $faker->randomNumber(2, false);
             $newProject->goals = json_encode($faker->randomElements(['goal1', 'goal2', 'goal3'], 2));
+            $newProject->image = $faker->imageUrl(640, 480, 'project', true);
             $newProject->budget = $faker->randomFloat(2, 1000, 10000);
 
             $newProject->save();
