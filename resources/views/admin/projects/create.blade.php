@@ -15,7 +15,7 @@
                         </h6>
                         <div>
                             <button type="submit" class="btn btn-success">Submit</button>
-                            <button type="reset" class="btn btn-warning">Reset</button>
+                            <button type="reset" class="btn btn-warning" id="resetButton">Reset</button>
                         </div>
                     </div>
 

@@ -41,4 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.readAsDataURL(imageFile);
         }
     });
+
+    const resetButton = document.getElementById('resetButton');
+
+    resetButton.addEventListener('click', function() {
+        // Clear the goals list
+        goalPreviewList.innerHTML = '';
+
+        // Hide the image preview container
+        imgPreview.parentElement.classList.remove('visible');
+    });
 });
