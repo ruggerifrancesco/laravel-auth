@@ -20,6 +20,9 @@ Auth::routes();
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', [ AdminDashboardController::class , 'home'])->name('home');
+    Route::get('/projects/deleted', [ProjectController::class, 'deletedIndex'] )->name('projects.deleted');
+    Route::post('/projects/deleted/{post}', [ProjectController::class, 'restore'] )->name('projects.restore');
+    Route::delete('/projects/deleted/{post}', [ProjectController::class, 'obliterate'] )->name('projects.obliterate');
     Route::resource('/projects', ProjectController::class);
 });
 
