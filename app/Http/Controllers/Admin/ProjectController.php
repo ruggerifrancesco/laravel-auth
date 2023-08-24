@@ -37,7 +37,7 @@ class ProjectController extends Controller
         // dd($request->all());
         // die;
 
-        $img_path = Storage::put('uploads', $request['image']);
+        $img_path = Storage::put('uploads/project-image/', $request['image']);
 
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
