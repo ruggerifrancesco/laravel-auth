@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const imageInput = document.getElementById('imageUploader');
-    const imgPreview = document.querySelector('.img-preview-container img');
+    const imgPreview = document.querySelector('.img-preview-container_create img');
 
     imageInput.addEventListener('change', function() {
         const imageFile = imageInput.files[0];

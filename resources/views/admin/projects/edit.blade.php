@@ -24,7 +24,7 @@
                             <div class="col-md-6">
                                 <div class="form-floating {{ $errors->has('title') ? 'is-invalid' : '' }}">
                                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                                        placeholder="Project Name" value="{{ old( 'title' , $project->title) }}" required>
+                                        placeholder="Project Name" value="{{ old( 'title' , $project->title) }}">
                                     <label for="title">Project Name</label>
                                 </div>
                                 @error('title')
@@ -35,7 +35,7 @@
                             <div class="col-md-3">
                                 <div class="form-floating {{ $errors->has('nPartecipants') ? 'is-invalid' : '' }}">
                                     <input type="number" class="form-control @error('nPartecipants') is-invalid @enderror" id="nPartecipants" name="nPartecipants"
-                                        placeholder="Partecipants" value="{{ old( 'title' , $project->nPartecipants) }}" required>
+                                        placeholder="Partecipants" value="{{ old( 'title' , $project->nPartecipants) }}">
                                     <label for="nPartecipants">Partecipants</label>
                                 </div>
                                 @error('nPartecipants')
@@ -47,21 +47,21 @@
                                 <div class="input-group">
                                     <div class="form-floating {{ $errors->has('budget') ? 'is-invalid' : '' }}">
                                         <input type="text" class="form-control @error('budget') is-invalid @enderror" id="budget" name="budget"
-                                            placeholder="Budget" aria-label="Dollar amount (with dot and two decimal places)" value="{{ old( 'title' , $project->budget) }}" required>
+                                            placeholder="Budget" aria-label="Dollar amount (with dot and two decimal places)" value="{{ old( 'title' , $project->budget) }}">
                                         <label for="budget">Budget</label>
                                     </div>
                                     <span class="input-group-text">$</span>
                                     <span class="input-group-text">0.00</span>
+                                    @error('budget')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('budget')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             <div class="input-group">
                                 <div class="form-floating {{ $errors->has('description') ? 'is-invalid' : '' }}">
                                     <textarea class="form-control @error('description') is-invalid @enderror"" aria-label="Description" name="description"
-                                        placeholder="Description" required>{{ old( 'title' , $project->description) }}</textarea>
+                                        placeholder="Description">{{ old( 'title' , $project->description) }}</textarea>
                                     <label for="description">Description</label>
                                 </div>
                                 @error('description')
@@ -69,29 +69,59 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="input-group mb-3">
-                                    <div class="form-floating {{ $errors->has('goals') ? 'is-invalid' : '' }}">
-                                        <input type="text" class="form-control @error('goals') is-invalid @enderror" id="newGoal" placeholder="Goals">
-                                        <label for="newGoal">Goals</label>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group mb-3">
+                                            <div class="form-floating {{ $errors->has('goals') ? 'is-invalid' : '' }}">
+                                                <input type="text" class="form-control @error('goals') is-invalid @enderror" id="newGoal"
+                                                    placeholder="Goals">
+                                                <label for="newGoal">Goals</label>
+                                            </div>
+                                            <button class="btn btn-outline-secondary" type="button" id="addGoalButton">Add Goal</button>
+                                            @error('goals')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    <button class="btn btn-outline-secondary" type="button" id="addGoalButton">Add Goal</button>
+
+                                    <div class="col-6">
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="imageUploader" name="image"
+                                                aria-describedby="inputImage" aria-label="Upload">
+                                            @error('image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
-                                @error('goals')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
                             </div>
 
-                            <div class="col-md-6">
-                                <ul class="list-group" id="goalPreviewList">
-                                    @foreach (json_decode($project->goals) as $goal)
-                                        <li class="list-group-item">
-                                            {{ $goal }}
-                                            <input type="hidden" name="goals[]" value="{{ $goal }}">
-                                        </li>
-                                    @endforeach
-                                </ul>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <ul class="list-group" id="goalPreviewList">
+                                            @foreach (json_decode($project->goals) as $goal)
+                                                <li class="list-group-item">
+                                                    {{ $goal }}
+                                                    <input type="hidden" name="goals[]" value="{{ $goal }}">
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure class="figure img-preview-container">
+                                            @if (str_starts_with($project->image, 'http'))
+                                                <img src="{{ $project->image }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                                            @else
+                                                <img src="{{ asset('storage/' . $project->image) }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                                            @endif
+                                            <figcaption class="figure-caption text-end">A preview for the selected image.</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </form>
                 </div>
