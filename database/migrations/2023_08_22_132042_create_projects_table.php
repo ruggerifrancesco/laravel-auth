@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('nPartecipants')->unsigned();;
             $table->json('goals');
             $table->float('budget')->unsigned();
-            $table->text('image');
+            $table->string('image')->default('https://wallpapercave.com/wp/wp7047282.jpg'); // Possible null
             $table->boolean('isSuspended')->default(false);
             $table->boolean('isCompleted')->default(false);
             $table->timestamps();

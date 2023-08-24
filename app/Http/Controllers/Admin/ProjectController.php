@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
@@ -36,6 +37,8 @@ class ProjectController extends Controller
         // dd($request->all());
         // die;
 
+        $img_path = Storage::put('uploads', $request['image']);
+
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
             'goals' => ['required', 'array', 'min:1'],
@@ -46,7 +49,7 @@ class ProjectController extends Controller
         ]);
 
         $dataProject['goals'] = json_encode($dataProject['goals']);
-        $dataProject['image'] = json_encode($dataProject['goals']);
+        $dataProject['image'] = $img_path;
 
         $newProject = Project::create($dataProject);
 
@@ -78,6 +81,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // DEBUG RUN (DEV ONLY) -> Uncomment this for testing
+        // dd($request->all());
+        // die;
+
         $project = Project::findOrFail($id);
 
         $dataProject = $request->validate([
