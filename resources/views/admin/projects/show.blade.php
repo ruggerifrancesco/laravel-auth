@@ -9,7 +9,7 @@
                     <span>ID: {{ $project->id }}</span>
                     <div class="status">
                         @if ($project->isCompleted)
-                        <span class="badge rounded-pill text-bg-success">Completed</span>
+                            <span class="badge rounded-pill text-bg-success">Completed</span>
                         @endif
                         @if ($project->isSuspended)
                             <span class="badge rounded-pill text-bg-warning">Suspended</span>
@@ -22,8 +22,11 @@
                     </h4>
 
                     <figure class="figure">
-                        <img src="{{ asset('storage/' . $project->image) }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
-                        <img src="{{ asset('storage/project-image/' . $project->image) }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                        @if (str_starts_with($project->image, 'http'))
+                            <img src="{{ $project->image }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                        @else
+                            <img src="{{ asset('storage/' . $project->image) }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                        @endif
                         <figcaption class="figure-caption text-center">Preview for the above image.</figcaption>
                     </figure>
 
