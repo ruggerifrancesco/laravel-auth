@@ -106,16 +106,18 @@ class ProjectController extends Controller
     /**
      * Display a listing of the deleted resources.
      */
-    public function deletedIndex(){
+    public function deletedIndex()
+    {
         $projects = Project::onlyTrashed()->paginate(10);
 
         return view('admin.projects.deleted', compact('projects'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Restoring the specified resource from deleted storage.
      */
-    public function restore(string $id){
+    public function restore(string $id)
+    {
         $post = Post::onlyTrashed()->findOrFail($slug);
         $post->restore();
 
@@ -123,7 +125,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete permantently the specified resource from storage.
      */
 
     public function obliterate(string $id)

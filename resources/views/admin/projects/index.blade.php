@@ -72,6 +72,9 @@
                     <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
                         Create new project
                     </a>
+                    <a href="{{ route('admin.projects.deleted') }}" class="btn btn-success">
+                        Deleted items
+                    </a>
                 </div>
             </div>
 

@@ -64,8 +64,8 @@
                     {{ $projects->links() }}
                 </div>
                 <div>
-                    <a href="{{ route('admin.projects.create') }}" class="btn btn-success">
-                        Create new project
+                    <a href="{{ route('admin.projects.index') }}" class="btn btn-success">
+                        Return to index
                     </a>
                 </div>
             </div>
