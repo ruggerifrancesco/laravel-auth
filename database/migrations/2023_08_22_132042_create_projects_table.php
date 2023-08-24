@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->integer('nPartecipants')->unsigned();;
             $table->json('goals');
             $table->float('budget')->unsigned();
-            $table->string('image')->default('https://wallpapercave.com/wp/wp7047282.jpg'); // Possible null
+            $table->text('image')->nullable()->default(DB::raw('NULL'));
             $table->boolean('isSuspended')->default(false);
             $table->boolean('isCompleted')->default(false);
             $table->timestamps();
