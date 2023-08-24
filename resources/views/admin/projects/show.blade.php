@@ -21,6 +21,12 @@
                         Title: <strong>{{ $project->title }}</strong>
                     </h4>
 
+                    <figure class="figure">
+                        <img src="{{ asset('storage/' . $project->image) }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                        <img src="{{ asset('storage/project-image/' . $project->image) }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
+                        <figcaption class="figure-caption text-center">Preview for the above image.</figcaption>
+                    </figure>
+
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                           <h2 class="accordion-header">
@@ -72,7 +78,16 @@
                       </div>
                 </div>
                 <div class="card-footer">
-                    Buttons
+                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning">
+                        Edit
+                    </a>
+                    <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            Delete
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
