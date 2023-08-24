@@ -37,8 +37,6 @@ class ProjectController extends Controller
         // dd($request->all());
         // die;
 
-        $img_path = Storage::put('uploads/project-image/', $request['image']);
-
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
             'goals' => ['required', 'array', 'min:1'],
@@ -49,7 +47,11 @@ class ProjectController extends Controller
         ]);
 
         $dataProject['goals'] = json_encode($dataProject['goals']);
-        $dataProject['image'] = $img_path;
+        
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('uploads/project-image/', $request->file('image'));
+            $dataProject['image'] = $img_path;
+        }
 
         $newProject = Project::create($dataProject);
 
