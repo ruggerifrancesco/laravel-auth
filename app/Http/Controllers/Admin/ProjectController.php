@@ -40,14 +40,14 @@ class ProjectController extends Controller
         $dataProject = $request->validate([
             'title' => ['required', 'unique:projects','min:5', 'max:255'],
             'goals' => ['required', 'array', 'min:1'],
-            'budget' => ['required'],
-            'image' => ['required', 'image', 'max:512'],
+            'budget' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/', 'max:99999999.99'],
+            'image' => ['required', 'image', 'max:1024'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
         ]);
 
         $dataProject['goals'] = json_encode($dataProject['goals']);
-        
+
         if ($request->hasFile('image')) {
             $img_path = Storage::put('uploads/project-image/', $request->file('image'));
             $dataProject['image'] = $img_path;
@@ -92,12 +92,16 @@ class ProjectController extends Controller
         $dataProject = $request->validate([
             'title' => ['required','min:5', 'max:255', Rule::unique('projects')->ignore($project->id)],
             'goals' => ['required', 'array', 'min:1'],
-            'budget' => ['required'],
-            'image' => ['required', 'image', 'max:512'],
+            'budget' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/', 'max:99999999.99'],
+            'image' => ['required', 'image', 'max:1024'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
         ]);
 
+        if ($request->hasFile('image')) {
+            $img_path = Storage::put('uploads/project-image/', $request->file('image'));
+            $dataProject['image'] = $img_path;
+        }
 
         $project->update($dataProject);
 

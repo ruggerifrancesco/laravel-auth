@@ -104,7 +104,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-6">
-                                        <figure class="figure img-preview-container_create">
+                                        <figure class="figure img-preview-container create">
                                             <img src="" class="figure-img img-fluid rounded" alt="...">
                                             <figcaption class="figure-caption text-end">A preview for the selected image.</figcaption>
                                         </figure>

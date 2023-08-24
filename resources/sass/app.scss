@@ -11,10 +11,14 @@ textarea {
     height: 300px !important;
 }
 
-.img-preview-container_create {
+.img-preview-container.create {
     display: none;
 }
 
-.img-preview-container_create.visible {
+.img-preview-container.edit {
+    display: block;
+}
+
+.img-preview-container.create.visibility {
     display: block;
 }

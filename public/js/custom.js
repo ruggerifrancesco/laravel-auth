@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const imageInput = document.getElementById('imageUploader');
-    const imgPreview = document.querySelector('.img-preview-container_create img');
+    const imgPreview = document.querySelector('.img-preview-container img');
+    const imgPreviewCreate = document.querySelector('.img-preview-container.create');
 
     imageInput.addEventListener('change', function() {
         const imageFile = imageInput.files[0];
@@ -34,8 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const reader = new FileReader();
 
             reader.addEventListener('load', function(event) {
+
                 imgPreview.src = event.target.result;
-                imgPreview.parentElement.classList.add('visible');
+                if (imgPreviewCreate) {
+                    imgPreview.parentElement.classList.add('visibility');
+                }
             });
 
             reader.readAsDataURL(imageFile);

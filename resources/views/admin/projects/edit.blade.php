@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
 
-                <form action="{{ route('admin.projects.update', ['project'=>$project->id]) }}" method="POST">
+                <form action="{{ route('admin.projects.update', ['project'=>$project->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -110,7 +110,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-6">
-                                        <figure class="figure img-preview-container">
+                                        <figure class="figure img-preview-container edit">
                                             @if (str_starts_with($project->image, 'http'))
                                                 <img src="{{ $project->image }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
                                             @else
