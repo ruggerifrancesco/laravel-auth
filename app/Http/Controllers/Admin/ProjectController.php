@@ -93,7 +93,8 @@ class ProjectController extends Controller
             'title' => ['required','min:5', 'max:255', Rule::unique('projects')->ignore($project->id)],
             'goals' => ['required', 'array', 'min:1'],
             'budget' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/', 'max:99999999.99'],
-            'image' => ['required', 'image', 'max:1024'],
+            // The validation image not required for input pass form, because it has alredy the value in it
+            'image' => ['image', 'max:1024'],
             'nPartecipants' => ['required', 'integer', 'min:1'],
             'description' => ['required', 'min:30'],
         ]);
@@ -101,6 +102,9 @@ class ProjectController extends Controller
         if ($request->hasFile('image')) {
             $img_path = Storage::put('uploads/project-image/', $request->file('image'));
             $dataProject['image'] = $img_path;
+        } elseif ($request->has('image')) {
+            // Keep the existing image value if no new image is uploaded
+            $dataProject['image'] = $request->input('image');
         }
 
         $project->update($dataProject);
