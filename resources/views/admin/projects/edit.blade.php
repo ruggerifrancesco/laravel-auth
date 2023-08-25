@@ -12,6 +12,7 @@
 
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="m-0">
+                            <span>ID: {{ $project->id }}</span>
                             <strong>Update {{ $project->title }} Project</strong>
                         </h6>
                         <div>
