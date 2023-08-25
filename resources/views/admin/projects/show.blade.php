@@ -10,9 +10,10 @@
                     <div class="status">
                         @if ($project->isCompleted)
                             <span class="badge rounded-pill text-bg-success">Completed</span>
-                        @endif
-                        @if ($project->isSuspended)
+                        @elseif ($project->isSuspended)
                             <span class="badge rounded-pill text-bg-warning">Suspended</span>
+                        @else
+                            <span class="badge rounded-pill text-bg-danger">Planning</span>
                         @endif
                     </div>
                 </div>
