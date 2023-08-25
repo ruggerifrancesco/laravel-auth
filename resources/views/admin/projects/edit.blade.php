@@ -36,7 +36,7 @@
                             <div class="col-md-3">
                                 <div class="form-floating {{ $errors->has('nPartecipants') ? 'is-invalid' : '' }}">
                                     <input type="number" class="form-control @error('nPartecipants') is-invalid @enderror" id="nPartecipants" name="nPartecipants"
-                                        placeholder="Partecipants" value="{{ old( 'title' , $project->nPartecipants) }}">
+                                        placeholder="Partecipants" value="{{ old( 'nPartecipants' , $project->nPartecipants) }}">
                                     <label for="nPartecipants">Partecipants</label>
                                 </div>
                                 @error('nPartecipants')
@@ -48,7 +48,7 @@
                                 <div class="input-group">
                                     <div class="form-floating {{ $errors->has('budget') ? 'is-invalid' : '' }}">
                                         <input type="text" class="form-control @error('budget') is-invalid @enderror" id="budget" name="budget"
-                                            placeholder="Budget" aria-label="Dollar amount (with dot and two decimal places)" value="{{ old( 'title' , $project->budget) }}">
+                                            placeholder="Budget" aria-label="Dollar amount (with dot and two decimal places)" value="{{ old( 'budget' , $project->budget) }}">
                                         <label for="budget">Budget</label>
                                     </div>
                                     <span class="input-group-text">$</span>
@@ -62,7 +62,7 @@
                             <div class="input-group">
                                 <div class="form-floating {{ $errors->has('description') ? 'is-invalid' : '' }}">
                                     <textarea class="form-control @error('description') is-invalid @enderror"" aria-label="Description" name="description"
-                                        placeholder="Description">{{ old( 'title' , $project->description) }}</textarea>
+                                        placeholder="Description">{{ old( 'description' , $project->description) }}</textarea>
                                     <label for="description">Description</label>
                                 </div>
                                 @error('description')
