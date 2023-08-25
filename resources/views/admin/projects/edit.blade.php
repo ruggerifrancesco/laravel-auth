@@ -120,7 +120,7 @@
                                                 <li class="list-group-item d-flex justify-content-between goal-item">
                                                     <span class="current-goal">{{ $goal }}</span>
                                                     <div class="goal-item-icon">
-                                                        <i class="fa-solid fa-xmark"></i>
+                                                        <i class="fa-solid fa-minus"></i>
                                                     </div>
                                                     <input type="hidden" name="goals[]" value="{{ $goal }}">
                                                 </li>
