@@ -13,8 +13,7 @@
                           <th scope="col">Partecipants</th>
                           <th scope="col">Goals</th>
                           <th scope="col">Budget</th>
-                          <th scope="col">Project Suspended</th>
-                          <th scope="col">Project Completed</th>
+                          <th scope="col">Status</th>
                           <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -31,16 +30,43 @@
                                     {{ $project->nPartecipants }}
                                 </td>
                                 <td>
-                                    {{ $project->goals }}
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#goalsModal">
+                                        Goals PrW
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="goalsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Goals List</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ul>
+                                                        @foreach (json_decode($project->goals) as $goal)
+                                                            <li>{{ $goal }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
                                 <td>
-                                    {{ $project->budget }}
+                                    {{ $project->budget }}$
                                 </td>
                                 <td>
-                                    {{ $project->isSuspended }}
+                                    @if ($project->isCompleted)
+                                        <span class="badge rounded-pill text-bg-success">Completed</span>
+                                    @elseif ($project->isSuspended)
+                                        <span class="badge rounded-pill text-bg-warning">Suspended</span>
+                                    @else
+                                        <span class="badge rounded-pill text-bg-danger">Planning</span>
+                                    @endif
                                 </td>
-                                <td>
-                                    {{ $project->isCompleted }}
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-success">
