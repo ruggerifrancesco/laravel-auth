@@ -22,7 +22,7 @@
                         Title: <strong>{{ $project->title }}</strong>
                     </h4>
 
-                    <figure class="figure">
+                    <figure class="figure w-100">
                         @if (str_starts_with($project->image, 'http'))
                             <img src="{{ $project->image }}" class="figure-img img-fluid rounded" alt="{{ $project->title }}">
                         @else

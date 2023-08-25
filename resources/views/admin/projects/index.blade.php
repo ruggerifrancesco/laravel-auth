@@ -31,8 +31,8 @@
                                 </td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#goalsModal">
-                                        Goals PrW
+                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#goalsModal">
+                                        <i class="fa-solid fa-eye"></i>
                                     </button>
 
                                     <!-- Modal -->

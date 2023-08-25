@@ -7,6 +7,9 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+// FontAwesome
+@import '@fortawesome/fontawesome-free/css/all.css';
+
 textarea {
     height: 300px !important;
 }
@@ -21,4 +24,9 @@ textarea {
 
 .img-preview-container.create.visibility {
     display: block;
+}
+
+img {
+    width: 100%;
+    object-fit: contain;
 }
