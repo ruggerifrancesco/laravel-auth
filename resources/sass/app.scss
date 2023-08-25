@@ -30,3 +30,28 @@ img {
     width: 100%;
     object-fit: contain;
 }
+
+.goal-item {
+    &:hover {
+        background: lightgrey;
+    }
+
+    .goal-item-icon {
+        display: none;
+
+        i {
+            color: rgb(107, 105, 105);
+        }
+    }
+
+    &:hover .goal-item-icon {
+        display: block;
+        cursor: pointer;
+        scale: 1.5;
+    }
+
+    &:hover .current-goal {
+        scale: 1.1;
+    }
+
+}
