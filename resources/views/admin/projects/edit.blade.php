@@ -35,7 +35,7 @@
 
                             <div class="col-md-3">
                                 <div class="form-floating {{ $errors->has('nPartecipants') ? 'is-invalid' : '' }}">
-                                    <input type="number" class="form-control @error('nPartecipants') is-invalid @enderror" id="nPartecipants" name="nPartecipants"
+                                    <input type="number" class="form-control @error('nPartecipants') is-invalid @enderror" id="nPartecipants" name="nPartecipants" min="1"
                                         placeholder="Partecipants" value="{{ old( 'nPartecipants' , $project->nPartecipants) }}">
                                     <label for="nPartecipants">Partecipants</label>
                                 </div>
