@@ -20,8 +20,7 @@ return new class extends Migration
             $table->json('goals');
             $table->float('budget')->unsigned();
             $table->text('image')->nullable()->default(DB::raw('NULL'));
-            $table->boolean('isSuspended')->default(false);
-            $table->boolean('isCompleted')->default(false);
+            $table->boolean('status')->nullable()->default(DB::raw('NULL'));
             $table->timestamps();
             $table->softDeletes();
         });

@@ -59,12 +59,12 @@
                                     {{ $project->budget }}$
                                 </td>
                                 <td>
-                                    @if ($project->isCompleted)
-                                        <span class="badge rounded-pill text-bg-success">Completed</span>
-                                    @elseif ($project->isSuspended)
-                                        <span class="badge rounded-pill text-bg-warning">Suspended</span>
+                                    @if ($project->status === 1)
+                                        <span class="badge rounded-pill bg-success text-light">Completed</span>
+                                    @elseif ($project->status === 0)
+                                        <span class="badge rounded-pill bg-warning text-dark">Suspended</span>
                                     @else
-                                        <span class="badge rounded-pill text-bg-danger">Planning</span>
+                                        <span class="badge rounded-pill bg-danger text-light">Planning</span>
                                     @endif
                                 </td>
                                 </td>
