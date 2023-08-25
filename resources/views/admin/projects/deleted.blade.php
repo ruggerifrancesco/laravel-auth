@@ -10,11 +10,6 @@
                         <tr class="table-info">
                           <th scope="col">ID</th>
                           <th scope="col">Title</th>
-                          <th scope="col">Partecipants</th>
-                          <th scope="col">Goals</th>
-                          <th scope="col">Budget</th>
-                          <th scope="col">Project Suspended</th>
-                          <th scope="col">Project Completed</th>
                           <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -26,21 +21,6 @@
                                 </th>
                                 <td>
                                     {{ $project->title }}
-                                </td>
-                                <td>
-                                    {{ $project->nPartecipants }}
-                                </td>
-                                <td>
-                                    {{ $project->goals }}
-                                </td>
-                                <td>
-                                    {{ $project->budget }}
-                                </td>
-                                <td>
-                                    {{ $project->isSuspended }}
-                                </td>
-                                <td>
-                                    {{ $project->isCompleted }}
                                 </td>
                                 <td>
                                     <form class="d-inline-block me-2" action="{{ route('admin.projects.restore', $project->id) }}" method="POST">
