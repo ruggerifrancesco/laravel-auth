@@ -31,12 +31,12 @@
                                 </td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#goalsModal">
+                                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#goalsModal{{ $project->id }}">
                                         <i class="fa-solid fa-eye"></i>
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="goalsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="goalsModal{{ $project->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
