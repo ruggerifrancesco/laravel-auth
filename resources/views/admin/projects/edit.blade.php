@@ -89,7 +89,21 @@
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <input type="file" class="form-control @error('image') is-invalid @enderror" id="imageUploader" name="image"
-                                                aria-describedby="inputImage" aria-label="Upload">
+                                                aria-describedby="inputImage" aria-label="Upload" value="{{ old('image', $project->image) }}">
+                                            <div class="col-12 d-flex flex-column">
+                                                @if (str_starts_with($project->image, 'http'))
+                                                    <figcaption class="figure-caption text-end">
+                                                        Current Image URL:
+                                                        <span><a href="{{ $project->image }}" target="_blank">{{ $project->image }}</a></span>
+                                                    </figcaption>
+                                                @else
+                                                    <figcaption class="figure-caption text-end">
+                                                        Current Image:
+                                                        <span>{{ $project->image }}</span>
+                                                    </figcaption>
+                                                @endif
+                                            </div>
+
                                             @error('image')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
